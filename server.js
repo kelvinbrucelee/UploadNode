@@ -2,9 +2,6 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const app = express();
-const fs = require('fs');
-
-const dir = "C:/Temp/Documents";
 
 const port = process.env.PORT || 3000;
 
@@ -12,7 +9,7 @@ app.use('/assets', express.static(__dirname + '/assets/'));
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'C:/Temp/Documents')
+        cb(null, 'https://backup-heroku.herokuapp.com/uploads')
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
@@ -23,16 +20,6 @@ const upload = multer({ storage })
 
 //Router Principal
 app.get('/', (req, res) => {
-     //Verifica se não existe
-     if (!fs.existsSync(dir)){
-        //Efetua a criação do diretório
-        fs.mkdir(dir, (err) => {
-            if (err) {
-                res.sendFile(__dirname + '/index.html');
-            }
-        });
-    }
-  
     res.sendFile(__dirname + '/index.html')
 })
 
