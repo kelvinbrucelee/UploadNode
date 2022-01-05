@@ -3,8 +3,7 @@ const multer = require('multer');
 const path = require('path');
 const app = express();
 
-var host = '127.0.0.1'
-var port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use('/assets', express.static(__dirname + '/assets/'));
 
@@ -20,7 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage })
 
 //Router Principal
-app.get('/', (req, res) => {
+app.get('/', function (req, res){
     res.sendFile(__dirname + '/index.html')
 })
 
@@ -36,6 +35,6 @@ app.post('/upload', upload.single('arquivo'), (req, res, next) => {
     res.sendFile(__dirname + '/upload.html')
 })
 
-app.listen(port, host, () => {
+app.listen(port, () => {
     console.log(`Servidor rodando na port ${port}`)
 })
