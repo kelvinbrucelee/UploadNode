@@ -1,6 +1,6 @@
-# UploadNode
+# Upload Node
 
-![Image Alt Text](./assets/uploader.png)
+![Image Alt Text](./assets/img/uploader.png)
 
 # Express Multer File Upload
 
@@ -15,15 +15,25 @@ Before running the application, make sure you have Node.js and npm installed on 
 1. Clone the repository:
 
    ```bash
-   git clone git@github.com:kelvinbrucelee/UploadNode.git```
+   git clone git@github.com:kelvinbrucelee/UploadNode.git
+
+2. Install node_modules:
+    ```bash
+    # using npm
+    npm install node
+
+3. Start the node:
+     ```bash
+    # using npm
+    npm start
 
 
 # File Upload
 - The file upload functionality is implemented using the Multer middleware.
 - Uploaded files are stored in the 'uploads' directory.
-- Access the upload page by navigating to http://localhost:3000/upload after starting the server.
+- Access the upload page by navigating to http://localhost:3000/ after starting the server.
 
-## project structure
+## Project Structure
 
 ```UploadNode/
 |-- assets/
@@ -40,8 +50,3 @@ Before running the application, make sure you have Node.js and npm installed on 
 |-- package.json
 |-- README.md
 ```
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-vbnet
-
