@@ -5,11 +5,18 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+const fs = require('fs');
+const uploadDirectory = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadDirectory)) {
+    fs.mkdirSync(uploadDirectory);
+}
+
 app.use('/assets', express.static(__dirname + '/assets/'));
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, '/uploads')
+        cb(null, 'uploads')
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
